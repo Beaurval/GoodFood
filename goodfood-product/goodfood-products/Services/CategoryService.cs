@@ -2,6 +2,7 @@
 using goodfood_products.Models.CategoryModels;
 using goodfood_products.Repositories.Interfaces;
 using goodfood_products.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace goodfood_products.Services
 {
@@ -16,15 +17,15 @@ namespace goodfood_products.Services
 
         public async Task<ICollection<Category>> GetAllCategoriesAsync()
         {
-            return await _categoryRepository.GetCategories();
+            return await _categoryRepository.GetAllCategories();
         }
 
         public async Task<Category> GetCategoryByIdAsync(int id)
         {
-            return await _categoryRepository.GetCategory(id);
+            return await _categoryRepository.GetCategoryById(id);
         }
 
-        public async Task<Category> CreateCategoryAsync(CreateCategoryModel categoryModel)
+        public async Task<Category> CreateCategoryAsync([FromForm] CreateCategoryModel categoryModel)
         {
             Category category = await _categoryRepository.CreateCategory(categoryModel);
             return category;

@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using goodfood_products.Entities;
 using goodfood_products.Repositories;
 using goodfood_products.Repositories.Interfaces;
@@ -18,6 +19,10 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();

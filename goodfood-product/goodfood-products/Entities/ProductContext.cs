@@ -9,6 +9,11 @@ namespace goodfood_products.Entities
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>().Property(p => p.ProductImage).HasColumnType("image");
+        }
+
         public DbSet<Product> Products { get; set; } = null!;
         public DbSet<Category> Categories { get; set; } = null!;
     }

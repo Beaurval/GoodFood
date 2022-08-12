@@ -1,12 +1,11 @@
-﻿namespace goodfood_products.Entities
+﻿namespace goodfood_products.Models.ProductModels
 {
-    public class Product
+    public class UpdateProductModel
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public float Price { get; set; }
-        public byte[] ProductImage { get; set; } = null!;
+        public IFormFile ImageToUpload { get; set; } = null!;
         public int CategoryId { get; set; }
-        public Category Category { get; set; } = null!;
     }
 }

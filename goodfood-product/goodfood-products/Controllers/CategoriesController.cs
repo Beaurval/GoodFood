@@ -39,6 +39,20 @@ namespace goodfood_products.Controllers
             return category;
         }
 
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateCategory(int id,[FromForm] UpdateCategoryModel categoryModel)
+        {
+            if (id != categoryModel.Id)
+            {
+                return BadRequest();
+            }
+
+            await _categoryService.UpdateCategoryAsync(categoryModel);
+            await _unitOfWork.SaveChangesAsync();
+
+            return Ok();
+        }
+
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteCategory(int id)
         {

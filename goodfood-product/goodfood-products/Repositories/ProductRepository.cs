@@ -34,6 +34,7 @@ namespace goodfood_products.Repositories
             { 
                 CategoryId = productModel.CategoryId,
                 Name = productModel.Name,
+                Description = productModel.Description,
                 ProductImage = convertedImage,
                 Price = productModel.Price
             };
@@ -47,6 +48,7 @@ namespace goodfood_products.Repositories
             Product product = await GetProductById(productModel.Id);
             product.CategoryId = productModel.CategoryId;
             product.Name = productModel.Name;
+            product.Description = productModel.Description;
             product.Price = productModel.Price;
 
             if (productModel.ImageToUpload.Length > 0)

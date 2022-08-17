@@ -8,10 +8,12 @@ namespace goodfood_orders.Services
     public class OrderService : IOrderService
     {
         private readonly IOrderRepository _orderRepository;
+        private readonly ILineRepository _lineRepository;
 
-        public OrderService(IOrderRepository orderRepository)
+        public OrderService(IOrderRepository orderRepository, ILineRepository lineRepository)
         {
             _orderRepository = orderRepository;
+            _lineRepository = lineRepository;
         }
 
         public async Task<ICollection<Order>> GetAllOrdersAsync() 
@@ -24,6 +26,14 @@ namespace goodfood_orders.Services
 
         public async Task UpdateOrderAsync(UpdateOrderModel orderModel)
         {
+            Order orderFromDb = await _orderRepository.GetOrderById(orderModel.Id);
+            if (orderFromDb.RestaurantId != orderModel.RestaurantId)
+            {
+                foreach (var line in orderFromDb.Lines)
+                {
+                    await _lineRepository.DeleteLine(line.Id);
+                }
+            }
             await _orderRepository.UpdateOrder(orderModel);
         }
 

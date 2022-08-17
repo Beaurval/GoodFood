@@ -23,8 +23,17 @@ namespace goodfood_orders.Services
         public async Task<OrderLine> AddLine(CreateOrderLineModel lineModel) 
             => await _lineRepository.AddLine(lineModel);
 
-        public async Task UpdateLine(UpdateOrderLineModel lineModel) 
-            => await _lineRepository.UpdateLine(lineModel);
+        public async Task UpdateLine(UpdateOrderLineModel lineModel)
+        {
+            if (lineModel.Quantity > 0)
+            {
+                await _lineRepository.UpdateLine(lineModel);
+            }
+            else
+            {
+                await _lineRepository.DeleteLine(lineModel.Id);
+            }
+        }
 
         public async Task DeleteLine(int idLine) 
             => await _lineRepository.DeleteLine(idLine);

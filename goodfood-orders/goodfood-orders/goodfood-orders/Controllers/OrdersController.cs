@@ -1,7 +1,8 @@
 ﻿using goodfood_orders.Entities;
 using goodfood_orders.Models;
 using goodfood_orders.Services.Interfaces;
-using Microsoft.AspNetCore.Http;
+using Microsoft.Net.Http;
+using Microsoft.Net.Http.Headers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace goodfood_orders.Controllers

@@ -10,5 +10,6 @@ namespace goodfood_orders.Entities
         }
 
         public DbSet<Order> Orders { get; set; } = null!;
+        public DbSet<OrderLine> Lines { get; set; } = null!;
     }
 }

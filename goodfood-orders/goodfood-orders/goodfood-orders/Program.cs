@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using goodfood_orders.Entities;
 using goodfood_orders.Repositories;
 using goodfood_orders.Repositories.Interfaces;
@@ -7,7 +8,8 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles); ;
 
 builder.Services.AddDbContext<OrderContext>(opt =>
     opt.UseInMemoryDatabase("Orders"));
@@ -16,7 +18,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<ILineRepository, LineRepository>();
+
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<ILineService, LineService>();
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();

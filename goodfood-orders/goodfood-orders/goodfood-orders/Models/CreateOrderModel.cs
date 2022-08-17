@@ -2,6 +2,6 @@
 {
     public class CreateOrderModel
     {
-        public double Tip { get; set; }
+        public int RestaurantId { get; set; }
     }
 }

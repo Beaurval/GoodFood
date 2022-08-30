@@ -1,6 +1,6 @@
 ﻿using goodfood_user.Entities;
 
-namespace goodfood_user.Models
+namespace goodfood_user.Models.User
 {
     public class GetUserModel
     {

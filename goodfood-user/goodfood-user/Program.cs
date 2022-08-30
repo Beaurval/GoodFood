@@ -16,8 +16,14 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<UserContext>(opt =>
     opt.UseInMemoryDatabase("Products", b => b.EnableNullChecks(false)));
+
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IAddressService, AddressService>();
+
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();

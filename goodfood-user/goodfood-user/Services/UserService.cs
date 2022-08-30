@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using goodfood_user.Entities;
-using goodfood_user.Models;
+using goodfood_user.Models.User;
 using goodfood_user.Repositories.Interfaces;
 using goodfood_user.Services.Interfaces;
 

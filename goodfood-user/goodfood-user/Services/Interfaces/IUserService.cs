@@ -1,4 +1,4 @@
-﻿using goodfood_user.Models;
+﻿using goodfood_user.Models.User;
 
 namespace goodfood_user.Services.Interfaces
 {

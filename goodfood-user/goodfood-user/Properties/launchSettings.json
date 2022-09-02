@@ -12,7 +12,7 @@
     "goodfood_user": {
       "commandName": "Project",
       "launchBrowser": false,
-      "launchUrl": "swagger",
+      "launchUrl": "api/users",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

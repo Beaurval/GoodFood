@@ -59,7 +59,7 @@ namespace goodfood_user.Services
 
         public async Task DeleteUserAddress(int idAddress)
         {
-            _addressRepository.UpdateAddress(await _addressRepository.GetAddress(idAddress));
+            _addressRepository.DeleteUserAddress(await _addressRepository.GetAddress(idAddress));
         }
 
         public async Task<bool> AddressExist(int idAddress) => await GetAddressAsync(idAddress) != null;

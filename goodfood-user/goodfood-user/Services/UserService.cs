@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using goodfood_user.Entities;
+using goodfood_user.Models.Role;
 using goodfood_user.Models.User;
 using goodfood_user.Repositories.Interfaces;
 using goodfood_user.Services.Interfaces;
@@ -42,6 +43,16 @@ namespace goodfood_user.Services
         public async Task<GetUserModel> CreateUserAsync(CreateUserModel userModel)
         {
             User user = _mapperCreate.Map<User>(userModel);
+            user.RegistrationValidated = false;
+            user.RoleId = 1;
+            return _mapperGet.Map<GetUserModel>(await _userRepository.CreateUser(user));
+        }
+
+        public async Task<GetUserModel> CreateUserWithRoleAsync(CreateUserModel userModel, GetRoleModel role)
+        {
+            User user = _mapperCreate.Map<User>(userModel);
+            user.RegistrationValidated = false;
+            user.RoleId = role.Id;
             return _mapperGet.Map<GetUserModel>(await _userRepository.CreateUser(user));
         }
 
@@ -50,6 +61,29 @@ namespace goodfood_user.Services
             User user = _mapperUpdate.Map<User>(userModel);
             _userRepository.UpdateUser(user);
             return _mapperGet.Map<GetUserModel>(user);
+        }
+
+        public async Task AskResetPassword(string mail)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<bool> ResetPassword(int idUser, string password, string confirmPassword)
+        {
+            if(password != confirmPassword)
+                return false;
+
+            return await _userRepository.ResetPassword(idUser, password);
+        }
+
+        public async Task ConfirmRegistration(int idUser)
+        {
+            await _userRepository.ConfirmRegistration(idUser);
+        }
+
+        public async Task ChangeUserRoleAsync(int idRole, int idUser)
+        {
+            await _userRepository.ChangeUserRole(idRole, idUser);
         }
 
         public async Task DeleteUser(int idUser)

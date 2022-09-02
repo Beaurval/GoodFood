@@ -37,26 +37,52 @@ namespace goodfood_user.Controllers
             return address;
         }
 
+        //Roles
+        [Route("{idUser}/roles/{idRole}")]
+        [HttpPut]
+        public async Task<ActionResult> ChangeUserRole(int idRole, int idUser)
+        {
+            await _userService.ChangeUserRoleAsync(idRole, idUser);
+            await _unitOfWork.SaveChangesAsync();
+            return Ok();
+        }
+
         //Users
         [HttpGet("{idUser}")]
-        public async Task <ActionResult<GetUserModel>> GetUser(int idUser)
+        public async Task<ActionResult<GetUserModel>> GetUserById(int idUser)
         {
+            if (!(await _userService.UserExist(idUser)))
+                return NotFound();
+
             return await _userService.GetUserAsync(idUser);
         }
 
         [HttpGet]
-        public async Task<ActionResult<ICollection<GetUserModel>>> GetAllUsers(int idUser)
+        public async Task<ActionResult<ICollection<GetUserModel>>> GetAllUsers()
         {
             return (await _userService.GetAllUsersAsync()).ToList();
         }
 
         [HttpPost]
-        public async Task<GetUserModel> CreateUser([FromForm] CreateUserModel userModel)
+        public async Task<GetUserModel> CreateUser(CreateUserModel userModel)
         {
             GetUserModel result = await _userService.CreateUserAsync(userModel);
             await _unitOfWork.SaveChangesAsync();
 
             return result;
+        }
+        [Route("{idUser}/reset")]
+        [HttpPut]
+        public async Task<ActionResult> ResetPassword(int idUser, string password, string confirmPassword)
+        {
+            if (!await _userService.ResetPassword(idUser, password, confirmPassword))
+            {
+                return BadRequest();
+            }
+
+            await _unitOfWork.SaveChangesAsync();
+            return Ok();
+
         }
 
         [HttpPut("{idUser}")]
@@ -74,6 +100,18 @@ namespace goodfood_user.Controllers
             await _unitOfWork.SaveChangesAsync();
 
             return Ok(result);
+        }
+        [Route("{idUser}/confirm")]
+        [HttpPut]
+        public async Task<ActionResult> ConfirmUserRegistration(int idUser)
+        {
+            if (!(await _userService.UserExist(idUser)))
+                return NotFound();
+
+            await _userService.ConfirmRegistration(idUser);
+            await _unitOfWork.SaveChangesAsync();
+
+            return Ok();
         }
 
         [HttpDelete("{idUser}")]

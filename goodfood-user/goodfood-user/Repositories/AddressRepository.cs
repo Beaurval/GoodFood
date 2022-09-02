@@ -27,18 +27,8 @@ namespace goodfood_user.Repositories
 
         public void UpdateAddress(Address address)
         {
-            var local = _userContext.Set<Address>()
-                .Local
-                .FirstOrDefault(entry => entry.Id.Equals(address.Id));
-
-            // check if local is not null 
-            if (local != null)
-            {
-                // detach
-                _userContext.Entry(local).State = EntityState.Detached;
-            }
-            // set Modified flag in your entry
-            _userContext.Entry(address).State = EntityState.Modified;
+            _userContext.ChangeTracker.Clear();
+            _userContext.Addresses.Update(address);
         }
 
         public void DeleteUserAddress(Address address)

@@ -16,7 +16,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddAutoMapper(typeof(RoleProfile));
+builder.Services.AddAutoMapper(typeof(RoleProfile), typeof(UserProfile), typeof(AddressProfile));
 
 builder.Services.AddDbContext<UserContext>(opt =>
     opt.UseInMemoryDatabase("Products", b => b.EnableNullChecks(false)));

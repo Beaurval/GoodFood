@@ -9,49 +9,39 @@ namespace goodfood_user.Services
     public class AddressService : IAddressService
     {
         private readonly IAddressRepository _addressRepository;
-        private readonly IMapper _mapperGet;
-        private readonly IMapper _mapperCreate;
-        private readonly IMapper _mapperUpdate;
+        private readonly IMapper _mapper;
 
-        public AddressService(IAddressRepository addressRepository)
+        public AddressService(IAddressRepository addressRepository, IMapper mapper)
         {
             _addressRepository = addressRepository;
-
-            //Auto mapper
-            var configGet = new MapperConfiguration(cfg => cfg.CreateMap<Address, GetAddressModel>());
-            var configCreate = new MapperConfiguration(cfg => cfg.CreateMap<CreateAddressModel, Address>());
-            var configUpdate = new MapperConfiguration(cfg => cfg.CreateMap<UpdateAddressModel, Address>());
-
-            _mapperGet = configGet.CreateMapper();
-            _mapperCreate = configCreate.CreateMapper();
-            _mapperUpdate = configUpdate.CreateMapper();
+            _mapper = mapper;
         }
         public async Task<ICollection<GetAddressModel>> GetAddressesFromUserAsync(int idUser)
         {
             List<Address> addresses = (await _addressRepository.GetAddressesFromUser(idUser)).ToList();
 
-            return _mapperGet.Map<ICollection<GetAddressModel>>(addresses);
+            return _mapper.Map<ICollection<GetAddressModel>>(addresses);
         }
 
         public async Task<GetAddressModel> GetAddressAsync(int idAddress)
         {
             Address addresses = await _addressRepository.GetAddress(idAddress);
 
-            return _mapperGet.Map<GetAddressModel>(addresses);
+            return _mapper.Map<GetAddressModel>(addresses);
         }
 
         public async Task<GetAddressModel> AddAddressToUserAsync(CreateAddressModel addressModel, int idUser)
         {
-            Address address = _mapperCreate.Map<Address>(addressModel);
+            Address address = _mapper.Map<Address>(addressModel);
             address.LastUpdate = DateTime.Now;
 
             await _addressRepository.AddAddress(address);
-            return _mapperGet.Map<GetAddressModel>(address);
+            return _mapper.Map<GetAddressModel>(address);
         }
 
         public void UpdateAddress(UpdateAddressModel addressModel)
         {
-            Address address = _mapperUpdate.Map<Address>(addressModel);
+            Address address = _mapper.Map<Address>(addressModel);
             address.LastUpdate = DateTime.Now;
 
             _addressRepository.UpdateAddress(address);

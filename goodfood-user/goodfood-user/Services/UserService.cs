@@ -10,57 +10,47 @@ namespace goodfood_user.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        private readonly IMapper _mapperGet;
-        private readonly IMapper _mapperCreate;
-        private readonly IMapper _mapperUpdate;
+        private readonly IMapper _mapper;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
-
-            //Auto mapper
-            var configGet = new MapperConfiguration(cfg => cfg.CreateMap<User, GetUserModel>());
-            var configCreate = new MapperConfiguration(cfg => cfg.CreateMap<CreateUserModel, User>());
-            var configUpdate = new MapperConfiguration(cfg => cfg.CreateMap<UpdateUserModel, User>());
-
-            _mapperGet = configGet.CreateMapper();
-            _mapperCreate = configCreate.CreateMapper();
-            _mapperUpdate = configUpdate.CreateMapper();
+            _mapper = mapper;
         }
 
         public async Task<GetUserModel> GetUserAsync(int idUser)
         {
-            GetUserModel userModel = _mapperGet.Map<GetUserModel>((await _userRepository.GetUser(idUser)));
+            GetUserModel userModel = _mapper.Map<GetUserModel>((await _userRepository.GetUser(idUser)));
             return userModel;
         }
 
         public async Task<ICollection<GetUserModel>> GetAllUsersAsync()
         {
-            List<GetUserModel> usersModel = _mapperGet.Map<List<GetUserModel>>((await _userRepository.GetAllUsers()));
+            List<GetUserModel> usersModel = _mapper.Map<List<GetUserModel>>((await _userRepository.GetAllUsers()));
             return usersModel;
         }
 
         public async Task<GetUserModel> CreateUserAsync(CreateUserModel userModel)
         {
-            User user = _mapperCreate.Map<User>(userModel);
+            User user = _mapper.Map<User>(userModel);
             user.RegistrationValidated = false;
             user.RoleId = 1;
-            return _mapperGet.Map<GetUserModel>(await _userRepository.CreateUser(user));
+            return _mapper.Map<GetUserModel>(await _userRepository.CreateUser(user));
         }
 
         public async Task<GetUserModel> CreateUserWithRoleAsync(CreateUserModel userModel, GetRoleModel role)
         {
-            User user = _mapperCreate.Map<User>(userModel);
+            User user = _mapper.Map<User>(userModel);
             user.RegistrationValidated = false;
             user.RoleId = role.Id;
-            return _mapperGet.Map<GetUserModel>(await _userRepository.CreateUser(user));
+            return _mapper.Map<GetUserModel>(await _userRepository.CreateUser(user));
         }
 
         public async Task<GetUserModel> UpdateUserAsync(UpdateUserModel userModel)
         {
-            User user = _mapperUpdate.Map<User>(userModel);
+            User user = _mapper.Map<User>(userModel);
             _userRepository.UpdateUser(user);
-            return _mapperGet.Map<GetUserModel>(user);
+            return _mapper.Map<GetUserModel>(user);
         }
 
         public async Task AskResetPassword(string mail)

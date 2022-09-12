@@ -16,5 +16,6 @@ namespace goodfood_user.Services.Interfaces
         public Task ChangeUserRoleAsync(int idRole, int idUser);
         public Task DeleteUser(int idUser);
         public Task<bool> UserExist(int idUser);
+        public Task<bool> UserExistWithMail(string mail);
     }
 }

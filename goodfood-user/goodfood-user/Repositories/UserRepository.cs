@@ -18,6 +18,10 @@ namespace goodfood_user.Repositories
         public async Task<ICollection<User>> GetAllUsers() => await _context.Users.ToListAsync();
 
         public async Task<User> GetUser(int idUser) => (await _context.Users.FirstOrDefaultAsync(u => u.Id == idUser))!;
+        public async Task<User> GetUserByMail(string email)
+        {
+            return (await _context.Users.FirstOrDefaultAsync(u => u.Email == email))!;
+        }
 
         public async Task<User> CreateUser(User user)
         {

@@ -1,4 +1,6 @@
-﻿using goodfood_user.Models.Address;
+﻿using System.Net;
+using goodfood_user.Exeptions;
+using goodfood_user.Models.Address;
 using goodfood_user.Models.User;
 using goodfood_user.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
@@ -56,6 +58,12 @@ namespace goodfood_user.Controllers
 
             return await _userService.GetUserAsync(idUser);
         }
+        [Route("exist")]
+        [HttpGet]
+        public async Task<ActionResult<bool>> UserExistWithMail(string email)
+        {
+            return await _userService.UserExistWithMail(email);
+        }
 
         [HttpGet]
         public async Task<ActionResult<ICollection<GetUserModel>>> GetAllUsers()
@@ -64,13 +72,25 @@ namespace goodfood_user.Controllers
         }
 
         [HttpPost]
-        public async Task<GetUserModel> CreateUser(CreateUserModel userModel)
+        public async Task<ActionResult<GetUserModel>> CreateUser(CreateUserModel userModel)
         {
-            GetUserModel result = await _userService.CreateUserAsync(userModel);
+            var result = new GetUserModel();
+
+            try
+            {
+               result = await _userService.CreateUserAsync(userModel);
+            }
+            catch (PasswordDoesNotMatchException e)
+            {
+                Response.StatusCode = 400;
+                return Content("Passwords does not match.");
+            }
+            
             await _unitOfWork.SaveChangesAsync();
 
             return result;
         }
+
         [Route("{idUser}/reset")]
         [HttpPut]
         public async Task<ActionResult> ResetPassword(int idUser, string password, string confirmPassword)

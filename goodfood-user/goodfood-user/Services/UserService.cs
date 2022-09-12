@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using goodfood_user.Entities;
+using goodfood_user.Exeptions;
 using goodfood_user.Models.Role;
 using goodfood_user.Models.User;
 using goodfood_user.Repositories.Interfaces;
@@ -32,7 +33,11 @@ namespace goodfood_user.Services
 
         public async Task<GetUserModel> CreateUserAsync(CreateUserModel userModel)
         {
+            if (userModel.Password != userModel.PasswordConfirmation)
+                throw new PasswordDoesNotMatchException("Les mots de passe ne sont pas identiques");
+
             User user = _mapper.Map<User>(userModel);
+
             user.RegistrationValidated = false;
             user.RoleId = 1;
             return _mapper.Map<GetUserModel>(await _userRepository.CreateUser(user));
@@ -85,6 +90,11 @@ namespace goodfood_user.Services
         {
             User user = await _userRepository.GetUser(id);
             return user != null;
+        }
+
+        public async Task<bool> UserExistWithMail(string email)
+        {
+            return await _userRepository.GetUserByMail(email) is not null;
         }
     }
 }

@@ -13,6 +13,6 @@ namespace goodfood_provider.Repositories.Interfaces
         public Task<Provider> GetProviderById(int id);
         public Task<Provider> CreateProvider(ProviderModel providerModel);
         public Task UpdateProvider(ProviderModel providertModel);
-        public void DeleteProvider(int idProvider);
+        public Task DeleteProvider(int idProvider);
     }
 }

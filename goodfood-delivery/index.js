@@ -1,12 +1,18 @@
-const express = require('express')
-const port = 80
-const app = express()
+const express = require('express');
+const port = 3000; // use .env
+const app = express();
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const livraison = require("./route/livraison");
 
-app.get('/api/deliveries', (req,res) => {
-    res.send("Liste des livraisons en cours")
-})
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.use("/api/livraison", livraison);
 
 app.listen(port, () => {
-    console.log("Serveur à l'écoute au port " + port)       
-})
+    console.log("Serveur à l'écoute au port " + port);      
+});
 
+module.exports = app;

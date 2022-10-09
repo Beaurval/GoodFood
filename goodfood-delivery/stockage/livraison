@@ -1,0 +1,10 @@
+{"livreur":{"position":{"x":null,"y":null}},"date_livraison":{"debut":1665326640889,"fin":null},"statut":"","_id":"3BTphGxcG66RFwrM"}
+{"test":"test","_id":"FHtBa9uXcoPRCdzS"}
+{"commande_id":1,"livreur":{"livreur_id":"","position":{"x":"","y":""}},"restaurant":{"restaurant_id":"","position":{"x":"","y":""}},"adresse_livraison":{"position":{"adresse":"","x":"","y":""}},"date_livraison":{"debut":"","fin":""},"statut":"","client_id":"","_id":"OtY7ThXmTcM59jVO"}
+{"livreur":{"position":{"x":null,"y":null}},"date_livraison":{"debut":1665326528991,"fin":null},"statut":"","_id":"PEkfNmrdtHIsZHpK"}
+{"livreur":{"position":{"x":null,"y":null}},"date_livraison":{"debut":1665326385865,"fin":null},"statut":"","_id":"Rl3G0qCwfD9F1vZ0"}
+{"commande_id":1,"livreur":{"livreur_id":1,"position":{"x":null,"y":null}},"restaurant_id":1,"adresse_id":1,"date_livraison":{"debut":1665326806005,"fin":null},"statut":"initialisé","client_id":1,"_id":"dGjPwLlM0GFyLl2E"}
+{"commande_id":1,"livreur":{"livreur_id":1,"position":{"x":null,"y":null}},"restaurant_id":1,"adresse_id":1,"date_livraison":{"debut":"2022-10-09T14:50:06.281Z","fin":null},"statut":"initialisé","client_id":1,"_id":"ex73TowzrURZibGf"}
+{"livreur":{"position":{"x":null,"y":null}},"date_livraison":{"debut":1665326536536,"fin":null},"statut":"","_id":"mEChCy4fnS8hEXje"}
+{"livreur":{"position":{"x":null,"y":null}},"date_livraison":{"debut":1665326755273,"fin":null},"statut":"","_id":"plMdfLbXQOpe0VX1"}
+{"commande_id":1,"livreur":{"livreur_id":1,"position":{"x":null,"y":null}},"restaurant_id":1,"adresse_id":1,"date_livraison":{"debut":1665326909327,"fin":null},"statut":"initialisé","client_id":1,"_id":"yNr4Axb1flehiPnQ"}

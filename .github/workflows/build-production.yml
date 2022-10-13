@@ -26,3 +26,30 @@ jobs:
           context: ./goodfood-providers
           tags: ${{secrets.ACR_NAME}}/goodfood-providers:latest
           push: true
+  deploy:
+    runs-on: ubuntu-20.04
+    needs: build_push_image
+    steps:
+      - uses: actions/checkout@v2
+      - name: Helm tool installer
+        uses: Azure/setup-helm@v3.3
+        with:
+          version: v3.3.1
+      - name: Kubernetes Set Context
+        uses: Azure/k8s-set-context@v3.0
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          resource-group: goodfood-pipelines-26697
+          cluster-name: goodfood-aks
+      - name: Run Helm Deploy
+        run: |
+          helm upgrade \
+          --install \
+          --create-namespace \
+          --atomic \
+          --wait \
+          --namespace staging \
+          contoso-website \
+          ./kubernetes/goodfood-providers \
+          --set image.repository=${{ secrets.ACR_NAME }} \
+          --set dns.name=${{ secrets.DNS_NAME }}

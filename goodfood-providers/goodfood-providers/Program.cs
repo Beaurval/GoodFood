@@ -24,6 +24,11 @@ builder.Services.AddScoped<IProviderService, ProviderService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5001); // to listen for incoming http connection on port 5001
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

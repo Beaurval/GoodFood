@@ -49,7 +49,7 @@ jobs:
           --atomic \
           --wait \
           --namespace staging \
-          contoso-website \
+          goodfood-providers \
           ./kubernetes/goodfood-providers \
           --set image.repository=${{ secrets.ACR_NAME }} \
           --set dns.name=${{ secrets.DNS_NAME }}

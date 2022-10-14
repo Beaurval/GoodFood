@@ -32,9 +32,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Helm tool installer
-        uses: Azure/setup-helm@v3.3
+        uses: Azure/setup-helm@v2.1
         with:
-          version: v2.1
+          version: v2.17.0
       - name: Kubernetes Set Context
         uses: Azure/aks-set-context@v1
         with:

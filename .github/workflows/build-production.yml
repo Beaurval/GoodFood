@@ -51,5 +51,5 @@ jobs:
           --namespace staging \
           goodfood-providers \
           ./goodfood-providers/deploy/goodfood-providers \
-          --set image.repository=${{ secrets.ACR_NAME }} \
+          --set image.repository=${{secrets.ACR_NAME}}/goodfood-providers:latest \
           --set dns.name=${{ secrets.DNS_NAME }}

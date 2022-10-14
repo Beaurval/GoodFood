@@ -28,6 +28,8 @@ namespace goodfood_provider.Controllers
         [HttpGet]
         public async Task<ActionResult<ICollection<Provider>>> GetProvider()
         {
+            _providerSerivce.CreateProviderAsync(new ProviderModel {Name = "Toto", Address = "Toto addresse", City= "totocity", Cp = "totocp" , Informations = "info", IsOpen = true});
+            await _unitOfWork.SaveChangesAsync();
             return (await _providerSerivce.GetAllProviderAsync()).ToList();
         }
 

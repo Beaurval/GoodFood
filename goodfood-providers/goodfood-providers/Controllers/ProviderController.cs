@@ -31,7 +31,7 @@ namespace goodfood_provider.Controllers
             var model = new ProviderModel {Name = "Toto", Address = "Toto addresse", City= "totocity", Cp = "totocp" , Informations = "info", IsOpen = true};
             var collection  = new List<ProviderModel>();
             collection.Add(model);
-            return collection;
+            return collection; 
             // return (await _providerSerivce.GetAllProviderAsync()).ToList();
         }
 

@@ -34,7 +34,7 @@ jobs:
       - name: Helm tool installer
         uses: Azure/setup-helm@v3.3
         with:
-          version: v3.3.1
+          version: v2.1
       - name: Kubernetes Set Context
         uses: Azure/aks-set-context@v1
         with:
@@ -48,6 +48,7 @@ jobs:
           --create-namespace \
           --atomic \
           --wait \
+          --recreate-pods \
           --namespace staging \
           goodfood-providers \
           ./goodfood-providers/deploy/goodfood-providers \

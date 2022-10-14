@@ -3,6 +3,7 @@ name: Build and push the tagged build to production
 on:
   push:
     branches: [ develop ]
+    paths: goodfood-providers
   pull_request:
     branches: [ develop ]
 

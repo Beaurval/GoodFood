@@ -4,7 +4,7 @@ metadata:
   name: goodfood-providers
   namespace: {{ default "staging" .Release.Namespace }}
   annotations:
-        rollme: {{ randAlphaNum 5 | quote }}
+        checksum/config: {{ include (print $.Template.BasePath "/deploy.yaml") . | sha256sum }}
 spec:
   replicas: 1
   selector:

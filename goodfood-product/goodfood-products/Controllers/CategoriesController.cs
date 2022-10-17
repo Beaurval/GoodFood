@@ -15,7 +15,7 @@ namespace goodfood_products.Controllers
 
         public CategoriesController(ICategoryService categoryService, IUnitOfWork unitOfWork)
         {
-            _categoryService = categoryService;
+            _categoryService = categoryService; 
             _unitOfWork = unitOfWork;
         }
 

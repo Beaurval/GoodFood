@@ -24,11 +24,11 @@ namespace goodfood_provider.Controllers
             _unitOfWork = unitOfWork;
             _providerSerivce = providerSerivce;
         }
-        
+
         [HttpGet]
         public async Task<ActionResult<ICollection<Provider>>> GetProvider()
         {
-            return (await _providerSerivce.GetAllProviderAsync()).ToList();
+            return (await _providerSerivce.GetAllProviderAsync()).ToList(); 
         }
 
         [HttpGet("{id}")]
@@ -69,7 +69,7 @@ namespace goodfood_provider.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteProvider(int id)
         {
-            _providerSerivce.DeleteProviderAsync(id);
+            await _providerSerivce.DeleteProviderAsync(id);
             await _unitOfWork.SaveChangesAsync();
 
             return Ok();

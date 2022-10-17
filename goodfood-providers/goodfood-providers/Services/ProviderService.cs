@@ -36,9 +36,9 @@ namespace goodfood_provider.Services
             await _providerRepository.UpdateProvider(providerModel);
         }
 
-        public void DeleteProviderAsync(int id)
+        public async Task DeleteProviderAsync(int id)
         {
-            _providerRepository.DeleteProvider(id);
+            await _providerRepository.DeleteProvider(id);
         }
     }
 }

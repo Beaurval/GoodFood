@@ -19,7 +19,12 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(RoleProfile), typeof(UserProfile), typeof(AddressProfile));
 
 builder.Services.AddDbContext<UserContext>(opt =>
-    opt.UseInMemoryDatabase("Products", b => b.EnableNullChecks(false)));
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("goodfood-db")));
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5001); // to listen for incoming http connection on port 5001
+});
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAddressRepository, AddressRepository>();

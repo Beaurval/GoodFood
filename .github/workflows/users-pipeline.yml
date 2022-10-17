@@ -33,7 +33,7 @@ jobs:
       - name: Build and push staging images
         uses: docker/build-push-action@v2
         with:
-          context: ./goodfood-users
+          context: ./goodfood-user
           tags: ${{secrets.ACR_NAME}}/goodfood-users:latest
           push: true
   deploy:

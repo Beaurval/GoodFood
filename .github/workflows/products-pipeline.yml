@@ -65,4 +65,4 @@ jobs:
           --set dns.name=${{ secrets.DNS_NAME }}
       - name: Re-apply deployments      
         run: kubectl rollout restart deployment goodfood-products -n staging
-    
+

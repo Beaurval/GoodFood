@@ -15,7 +15,7 @@ spec:
       labels:
         app: goodfood-products
     spec:
-      nodeSelector:
+      nodeSelector: 
         "kubernetes.io/os": linux
       containers:
       - name: goodfood-products

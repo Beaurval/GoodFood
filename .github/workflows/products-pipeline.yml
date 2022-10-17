@@ -59,7 +59,7 @@ jobs:
           --atomic \
           --wait \
           --namespace staging \
-          goodfood-products \
+          goodfood-product \
           ./goodfood-product/deploy/goodfood-product \
           --set image.repository=${{ secrets.ACR_NAME }} \
           --set dns.name=${{ secrets.DNS_NAME }}

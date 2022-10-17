@@ -24,15 +24,11 @@ namespace goodfood_provider.Controllers
             _unitOfWork = unitOfWork;
             _providerSerivce = providerSerivce;
         }
-        
+
         [HttpGet]
-        public async Task<ActionResult<ICollection<ProviderModel>>> GetProvider()
+        public async Task<ActionResult<ICollection<Provider>>> GetProvider()
         {
-            var model = new ProviderModel {Name = "Toto", Address = "Toto addresse updated auto", City= "totocity", Cp = "totocp" , Informations = "info", IsOpen = true};
-            var collection  = new List<ProviderModel>();
-            collection.Add(model);
-            return collection; 
-            // return (await _providerSerivce.GetAllProviderAsync()).ToList();
+            return (await _providerSerivce.GetAllProviderAsync()).ToList();
         }
 
         [HttpGet("{id}")]

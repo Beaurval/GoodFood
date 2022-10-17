@@ -69,7 +69,7 @@ namespace goodfood_provider.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteProvider(int id)
         {
-            _providerSerivce.DeleteProviderAsync(id);
+            await _providerSerivce.DeleteProviderAsync(id);
             await _unitOfWork.SaveChangesAsync();
 
             return Ok();

@@ -13,6 +13,6 @@ namespace goodfood_provider.Services.Interfaces
         public Task<Provider> GetProviderByIdAsync(int id);
         public Task<Provider> CreateProviderAsync(ProviderModel providerModel);
         public Task UpdateProviderAsync(ProviderModel providerModel);
-        public void DeleteProviderAsync(int id);
+        public Task DeleteProviderAsync(int id);
     }
 }

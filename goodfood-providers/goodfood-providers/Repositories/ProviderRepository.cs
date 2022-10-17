@@ -31,6 +31,7 @@ namespace goodfood_provider.Repositories
                 City = providerModel.City,
                 Cp = providerModel.Cp,
                 Informations = providerModel.Informations,
+                ProviderImage = convertedImage,
                 IsOpen = providerModel.IsOpen,
 
             };
@@ -40,13 +41,7 @@ namespace goodfood_provider.Repositories
 
         public async Task DeleteProvider(int idProvider)
         {
-            Provider provider = await GetProviderById(idProvider);
-            if (provider is not null)
-            {      
-                _providerContext.Remove(provider);
-            }
-
-            throw new Exception();
+            _providerContext.Providers.Remove(await _providerContext.Providers.FirstOrDefaultAsync(p => p.Id  == idProvider));
         }
 
         public async Task<ICollection<Provider>> GetAllProvider()

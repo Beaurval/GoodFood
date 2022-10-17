@@ -28,7 +28,7 @@ namespace goodfood_provider.Controllers
         [HttpGet]
         public async Task<ActionResult<ICollection<Provider>>> GetProvider()
         {
-            return (await _providerSerivce.GetAllProviderAsync()).ToList();
+            return (await _providerSerivce.GetAllProviderAsync()).ToList(); 
         }
 
         [HttpGet("{id}")]

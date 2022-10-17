@@ -1,9 +1,19 @@
-name: Build and push the latest build to staging
+name: Build and push the latest build for providers
 
 on:
-  push:
-    branches: [ develop ]
-
+   push:
+    branches: 
+      - develop
+      - master
+    paths: 
+      - goodfood-providers/**
+      
+   pull_request:
+     branches:
+        - develop
+        - master
+     paths:
+      - goodfood-providers/**
 jobs:
   build_push_image:
     runs-on: ubuntu-20.04

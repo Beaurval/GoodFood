@@ -1,0 +1,4 @@
+image:
+  registry: beaurval
+  name: goodfood-orders
+  tag: latest

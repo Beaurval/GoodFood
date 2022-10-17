@@ -12,7 +12,12 @@ builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles); ;
 
 builder.Services.AddDbContext<OrderContext>(opt =>
-    opt.UseInMemoryDatabase("Orders"));
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("goodfood-db")));
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5001); // to listen for incoming http connection on port 5001
+});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

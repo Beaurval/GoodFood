@@ -1,4 +1,4 @@
-name: Build and push the latest build for users
+name: Build and push the latest build for products
 
 on:
   push:
@@ -6,14 +6,14 @@ on:
       - develop
       - master
     paths: 
-      - goodfood-user/**
+      - goodfood-product/**
 
   pull_request:
     branches:
         - develop
         - master
     paths:
-      - goodfood-user/**
+      - goodfood-product/**
 jobs:
   build_push_image:
     runs-on: ubuntu-20.04
@@ -33,8 +33,8 @@ jobs:
       - name: Build and push staging images
         uses: docker/build-push-action@v2
         with:
-          context: ./goodfood-user
-          tags: ${{secrets.ACR_NAME}}/goodfood-users:latest
+          context: ./goodfood-product
+          tags: ${{secrets.ACR_NAME}}/goodfood-products:latest
           push: true
   deploy:
     runs-on: ubuntu-20.04
@@ -59,10 +59,10 @@ jobs:
           --atomic \
           --wait \
           --namespace staging \
-          goodfood-user \
-          ./goodfood-user/deploy/goodfood-user \
+          goodfood-products \
+          ./goodfood-product/deploy/goodfood-product \
           --set image.repository=${{ secrets.ACR_NAME }} \
           --set dns.name=${{ secrets.DNS_NAME }}
       - name: Re-apply deployments      
-        run: kubectl rollout restart deployment goodfood-users -n staging
-
+        run: kubectl rollout restart deployment goodfood-products -n staging
+    

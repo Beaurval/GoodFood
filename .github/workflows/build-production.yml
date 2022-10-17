@@ -36,7 +36,7 @@ jobs:
         with:
           version: v2.17.0
       - name: Kubernetes Set Context
-        uses: Azure/aks-set-context@v1
+        uses: Azure/k8s-set-context@v3.0
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           resource-group: goodfood-pipelines-26697
@@ -48,7 +48,6 @@ jobs:
           --create-namespace \
           --atomic \
           --wait \
-          --recreate-pods \
           --namespace staging \
           goodfood-providers \
           ./goodfood-providers/deploy/goodfood-providers \

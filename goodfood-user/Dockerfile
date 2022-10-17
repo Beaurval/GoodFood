@@ -1,5 +1,5 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
-WORKDIR /goodfood-users
+WORKDIR /goodfood-user
 
 # Copy everything
 COPY . ./
@@ -10,6 +10,6 @@ RUN dotnet publish -c Release -o out
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
-WORKDIR /goodfood-providers
-COPY --from=build-env /goodfood-users/out .
-ENTRYPOINT ["dotnet", "goodfood-users.dll"]
+WORKDIR /goodfood-user
+COPY --from=build-env /goodfood-user/out .
+ENTRYPOINT ["dotnet", "goodfood-user.dll"]

@@ -53,5 +53,6 @@ jobs:
           ./goodfood-providers/deploy/goodfood-providers \
           --set image.repository=${{ secrets.ACR_NAME }} \
           --set dns.name=${{ secrets.DNS_NAME }}
-          
-$ kubectl rollout restart deployment goodfood-providers -n staging
+      - name: Re-apply deployments      
+        run: kubectl rollout restart deployment goodfood-providers -n staging
+    

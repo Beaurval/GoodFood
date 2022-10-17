@@ -11,11 +11,11 @@ namespace goodfood_products.Controllers
     public class CategoriesController : ControllerBase
     {
         private readonly ICategoryService _categoryService;
-        private readonly IUnitOfWork _unitOfWork; 
+        private readonly IUnitOfWork _unitOfWork;
 
         public CategoriesController(ICategoryService categoryService, IUnitOfWork unitOfWork)
         {
-            _categoryService = categoryService;
+            _categoryService = categoryService; 
             _unitOfWork = unitOfWork;
         }
 

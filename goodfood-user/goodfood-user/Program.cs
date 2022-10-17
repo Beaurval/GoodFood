@@ -19,7 +19,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(RoleProfile), typeof(UserProfile), typeof(AddressProfile));
 
 builder.Services.AddDbContext<UserContext>(opt =>
-    opt.UseInMemoryDatabase("Products", b => b.EnableNullChecks(false)));
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("goodfood-db")));
 
 builder.WebHost.ConfigureKestrel(options =>
 {

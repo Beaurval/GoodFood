@@ -17,6 +17,12 @@ builder.Services.AddDbContext<ProductContext>(opt =>
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5001); // to listen for incoming http connection on port 5001
+});
+
+
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 

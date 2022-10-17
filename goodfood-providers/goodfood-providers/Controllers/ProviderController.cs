@@ -28,7 +28,7 @@ namespace goodfood_provider.Controllers
         [HttpGet]
         public async Task<ActionResult<ICollection<ProviderModel>>> GetProvider()
         {
-            var model = new ProviderModel {Name = "Toto", Address = "Toto addresse updated", City= "totocity", Cp = "totocp" , Informations = "info", IsOpen = true};
+            var model = new ProviderModel {Name = "Toto", Address = "Toto addresse updated auto", City= "totocity", Cp = "totocp" , Informations = "info", IsOpen = true};
             var collection  = new List<ProviderModel>();
             collection.Add(model);
             return collection; 

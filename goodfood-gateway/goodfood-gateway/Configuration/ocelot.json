@@ -22,7 +22,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/providers/{id}",
-      "UpstreamHttpMethod": [ "Put", "Delete", "Get" ]
+      "UpstreamHttpMethod": [ "Put","Post", "Delete", "Get" ]
     },
     {
       "DownstreamPathTemplate": "/api/products",
@@ -46,7 +46,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/products/{id}",
-      "UpstreamHttpMethod": [ "Put", "Delete", "Get" ]
+      "UpstreamHttpMethod": [ "Put","Post", "Delete", "Get" ]
     },
     {
       "DownstreamPathTemplate": "/api/categories",
@@ -70,7 +70,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/categories/{id}",
-      "UpstreamHttpMethod": [ "Put", "Delete", "Get" ]
+      "UpstreamHttpMethod": [ "Put","Post", "Delete", "Get" ]
     },
     {
       "DownstreamPathTemplate": "/api/orders",
@@ -94,7 +94,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/orders/{id}",
-      "UpstreamHttpMethod": [ "Put", "Delete", "Get" ]
+      "UpstreamHttpMethod": [ "Put", "Post","Delete", "Get" ]
     },
     {
       "DownstreamPathTemplate": "/api/lines",
@@ -118,7 +118,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/lines/{id}",
-      "UpstreamHttpMethod": [ "Put", "Delete", "Get" ]
+      "UpstreamHttpMethod": [ "Put","Post", "Delete", "Get" ]
     },
     {
       "DownstreamPathTemplate": "/api/users",
@@ -142,7 +142,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/users/{id}",
-      "UpstreamHttpMethod": [ "Put", "Delete", "Get" ]
+      "UpstreamHttpMethod": [ "Put","Post", "Delete", "Get" ]
     },
     {
       "DownstreamPathTemplate": "/api/roles",
@@ -166,7 +166,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/roles/{id}",
-      "UpstreamHttpMethod": [ "Put", "Delete", "Get" ]
+      "UpstreamHttpMethod": [ "Put", "Post","Delete", "Get" ]
     }
   ],
   "GlobalConfiguration": {

@@ -1,4 +1,0 @@
-apiVersion: v2
-name: goodfood-gateway
-description: Chart for the Contoso company website
-version: 0.1.0

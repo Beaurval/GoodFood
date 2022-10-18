@@ -13,6 +13,11 @@ builder.Services.AddSwaggerGen();
 builder.Configuration.AddJsonFile("Configuration/ocelot.json");
 builder.Services.AddOcelot();
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5001); // to listen for incoming http connection on port 5001
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,10 +27,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.ListenAnyIP(5001); // to listen for incoming http connection on port 5001
-});
+
 
 app.UseAuthorization();
 

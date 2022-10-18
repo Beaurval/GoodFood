@@ -5,7 +5,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "goodfood-providers",
+          "Host": "52.191.217.188",
           "Port": 80
         }
       ],
@@ -26,8 +26,6 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:5001",
-    "Namespace": "staging",
-    "Type": "kube"
+    "BaseUrl": "https://localhost:5001"
   }
 }

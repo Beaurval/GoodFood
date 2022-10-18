@@ -1,7 +1,7 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/providers",
+      "DownstreamPathTemplate": "/api/provider",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -9,11 +9,11 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/providers",
+      "UpstreamPathTemplate": "/api/provider",
       "UpstreamHttpMethod": [ "Get", "Post" ]
     },
     {
-      "DownstreamPathTemplate": "/api/providers/{id}",
+      "DownstreamPathTemplate": "/api/provider/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -21,7 +21,7 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/providers/{id}",
+      "UpstreamPathTemplate": "/api/provider/{id}",
       "UpstreamHttpMethod": [ "Put","Post", "Delete", "Get" ]
     },
     {
@@ -144,6 +144,18 @@
       "UpstreamPathTemplate": "/api/users/{id}",
       "UpstreamHttpMethod": [ "Put","Post", "Delete", "Get" ]
     },
+    {
+      "DownstreamPathTemplate": "/api/users/{id}/addresses",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "40.76.128.146",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/provider",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    }
     {
       "DownstreamPathTemplate": "/api/roles",
       "DownstreamScheme": "http",

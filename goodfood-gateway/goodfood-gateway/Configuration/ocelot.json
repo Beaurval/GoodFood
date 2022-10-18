@@ -155,7 +155,7 @@
       ],
       "UpstreamPathTemplate": "/api/provider",
       "UpstreamHttpMethod": [ "Get", "Post" ]
-    }
+    },
     {
       "DownstreamPathTemplate": "/api/roles",
       "DownstreamScheme": "http",

@@ -179,6 +179,31 @@
       ],
       "UpstreamPathTemplate": "/api/roles/{id}",
       "UpstreamHttpMethod": [ "Put", "Post","Delete", "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/users/{id}/roles/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "20.237.0.2",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/users/{id}/roles/{id}",
+      "UpstreamHttpMethod": [ "Put", "Post","Delete", "Get" ]
+    }
+    ,
+    {
+      "DownstreamPathTemplate": "/api/users/{id}/confirm",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "20.237.0.2",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/users/{id}/confirm",
+      "UpstreamHttpMethod": [ "Put", "Post","Delete", "Get" ]
     }
   ],
   "GlobalConfiguration": {

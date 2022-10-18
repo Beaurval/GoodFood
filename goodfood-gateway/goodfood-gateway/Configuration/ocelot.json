@@ -1,6 +1,30 @@
 {
   "Routes": [
     {
+      "DownstreamPathTemplate": "/api/providers",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "40.76.128.146",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/providers",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/providers/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "40.76.128.146",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/providers/{id}",
+      "UpstreamHttpMethod": [ "Put", "Delete", "Get" ]
+    },
+    {
       "DownstreamPathTemplate": "/api/products",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -22,6 +46,126 @@
         }
       ],
       "UpstreamPathTemplate": "/api/products/{id}",
+      "UpstreamHttpMethod": [ "Put", "Delete", "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/categories",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "52.191.217.188",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/categories",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/categories/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "52.191.217.188",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/categories/{id}",
+      "UpstreamHttpMethod": [ "Put", "Delete", "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/orders",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "20.237.9.176",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/orders",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/orders/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "20.237.9.176",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/orders/{id}",
+      "UpstreamHttpMethod": [ "Put", "Delete", "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/lines",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "20.237.9.176",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/lines",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/lines/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "20.237.9.176",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/lines/{id}",
+      "UpstreamHttpMethod": [ "Put", "Delete", "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/users",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "20.237.0.2",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/users",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/users/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "20.237.0.2",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/users/{id}",
+      "UpstreamHttpMethod": [ "Put", "Delete", "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/roles",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "20.237.0.2",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/roles",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/roles/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "20.237.0.2",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/roles/{id}",
       "UpstreamHttpMethod": [ "Put", "Delete", "Get" ]
     }
   ],

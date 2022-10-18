@@ -153,7 +153,7 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/provider",
+      "UpstreamPathTemplate": "/api/users/{id}/addresses",
       "UpstreamHttpMethod": [ "Get", "Post" ]
     },
     {

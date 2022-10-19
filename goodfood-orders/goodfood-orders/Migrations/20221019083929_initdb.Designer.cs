@@ -11,7 +11,7 @@ using goodfood_orders.Entities;
 namespace goodfood_orders.Migrations
 {
     [DbContext(typeof(OrderContext))]
-    [Migration("20221017152924_initdb")]
+    [Migration("20221019083929_initdb")]
     partial class initdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

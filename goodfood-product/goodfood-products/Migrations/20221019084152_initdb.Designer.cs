@@ -12,7 +12,7 @@ using goodfood_products.Entities;
 namespace goodfood_products.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20221017133955_initdb")]
+    [Migration("20221019084152_initdb")]
     partial class initdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

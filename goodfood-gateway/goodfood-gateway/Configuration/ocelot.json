@@ -22,7 +22,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/provider/{id}",
-      "UpstreamHttpMethod": [ "Put","Post", "Delete", "Get" ]
+      "UpstreamHttpMethod": [ "Put", "Post", "Delete", "Get" ]
     },
     {
       "DownstreamPathTemplate": "/api/products",
@@ -58,7 +58,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/products/{id}",
-      "UpstreamHttpMethod": [ "Put","Post", "Delete", "Get" ]
+      "UpstreamHttpMethod": [ "Put", "Post", "Delete", "Get" ]
     },
     {
       "DownstreamPathTemplate": "/api/categories",
@@ -82,7 +82,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/categories/{id}",
-      "UpstreamHttpMethod": [ "Put","Post", "Delete", "Get" ]
+      "UpstreamHttpMethod": [ "Put", "Post", "Delete", "Get" ]
     },
     {
       "DownstreamPathTemplate": "/api/orders",
@@ -106,7 +106,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/orders/{id}",
-      "UpstreamHttpMethod": [ "Put", "Post","Delete", "Get" ]
+      "UpstreamHttpMethod": [ "Put", "Post", "Delete", "Get" ]
     },
     {
       "DownstreamPathTemplate": "/api/lines",
@@ -130,7 +130,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/lines/{id}",
-      "UpstreamHttpMethod": [ "Put","Post", "Delete", "Get" ]
+      "UpstreamHttpMethod": [ "Put", "Post", "Delete", "Get" ]
     },
     {
       "DownstreamPathTemplate": "/api/users",
@@ -154,7 +154,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/users/{id}",
-      "UpstreamHttpMethod": [ "Put","Post", "Delete", "Get" ]
+      "UpstreamHttpMethod": [ "Put", "Post", "Delete", "Get" ]
     },
     {
       "DownstreamPathTemplate": "/api/users/{id}/addresses",
@@ -190,7 +190,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/roles/{id}",
-      "UpstreamHttpMethod": [ "Put", "Post","Delete", "Get" ]
+      "UpstreamHttpMethod": [ "Put", "Post", "Delete", "Get" ]
     },
     {
       "DownstreamPathTemplate": "/api/users/{id}/roles/{idRole}",
@@ -202,9 +202,8 @@
         }
       ],
       "UpstreamPathTemplate": "/api/users/{id}/roles/{idRole}",
-      "UpstreamHttpMethod": [ "Put", "Post","Delete", "Get" ]
-    }
-    ,
+      "UpstreamHttpMethod": [ "Put", "Post", "Delete", "Get" ]
+    },
     {
       "DownstreamPathTemplate": "/api/users/{id}/confirm",
       "DownstreamScheme": "http",
@@ -215,7 +214,19 @@
         }
       ],
       "UpstreamPathTemplate": "/api/users/{id}/confirm",
-      "UpstreamHttpMethod": [ "Put", "Post","Delete", "Get" ]
+      "UpstreamHttpMethod": [ "Put", "Post", "Delete", "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/livraison/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "20.237.62.85",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/livraison/{everything}",
+      "UpstreamHttpMethod": [ "Put", "Post", "Delete", "Get" ]
     }
   ],
   "GlobalConfiguration": {

@@ -35,6 +35,19 @@ namespace goodfood_products.Controllers
 
             return product;
         }
+        [Route("provider/{idRestaurant}")]
+        [HttpGet]
+        public async Task<ActionResult<ICollection<Product>>> GetProductForRestaurant(int idRestaurant)
+        {
+            ICollection<Product> products = await _productService.GetAllProductsForRestaurant(idRestaurant);
+
+            if (products.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(products);
+        }
 
         [HttpPost]
         public async Task<ActionResult<Product>> CreateProduct([FromForm] CreateProductModel productModel)

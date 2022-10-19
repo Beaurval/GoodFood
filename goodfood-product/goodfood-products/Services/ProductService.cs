@@ -17,6 +17,9 @@ namespace goodfood_products.Services
         public async Task<ICollection<Product>> GetAllProductsAsync() 
             => await _productRepository.GetAllProducts();
 
+        public async Task<ICollection<Product>> GetAllProductsForRestaurant(int idRestaurant)
+            => await _productRepository.GetAllProductsForRestaurant(idRestaurant);
+
         public async Task<Product> GetProductByIdAsync(int id) 
             => await _productRepository.GetProductById(id);
 

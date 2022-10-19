@@ -17,6 +17,9 @@ namespace goodfood_products.Repositories
         public async Task<ICollection<Product>> GetAllProducts() 
             => await _productContext.Products.Include("Category").ToListAsync();
 
+        public async Task<ICollection<Product>> GetAllProductsForRestaurant(int idRestaurant) 
+            => await _productContext.Products.Where(p => p.RestaurantId == idRestaurant).ToListAsync();
+
         public async Task<Product> GetProductById(int id) 
             => (await _productContext.Products.Include("Category").FirstOrDefaultAsync(p => p.Id == id))!;
 

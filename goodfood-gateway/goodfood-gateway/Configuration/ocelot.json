@@ -37,6 +37,18 @@
       "UpstreamHttpMethod": [ "Get", "Post" ]
     },
     {
+      "DownstreamPathTemplate": "/api/products/provider/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "52.191.217.188",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/products/provider/{id}",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    },
+    {
       "DownstreamPathTemplate": "/api/products/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [

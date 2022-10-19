@@ -13,6 +13,12 @@ builder.Services.AddSwaggerGen();
 builder.Configuration.AddJsonFile("Configuration/ocelot.json");
 builder.Services.AddOcelot();
 
+//services cors
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+{
+    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
+
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.ListenAnyIP(5001); // to listen for incoming http connection on port 5001
@@ -27,7 +33,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
+//app cors
+app.UseCors("corsapp");
 
 app.UseAuthorization();
 

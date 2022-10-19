@@ -34,7 +34,7 @@ namespace goodfood_user.Controllers
         public async Task<ActionResult<GetRoleModel>> CreateRole(CreateRoleModel roleModel)
         {
             GetRoleModel role = await _roleService.CreateRoleAsync(roleModel);
-            
+            await _unitOfWork.SaveChangesAsync();
             return role;
         }
 

@@ -78,14 +78,24 @@ namespace goodfood_user.Controllers
 
             try
             {
-               result = await _userService.CreateUserAsync(userModel);
+                result = await _userService.CreateUserAsync(userModel);
             }
             catch (PasswordDoesNotMatchException e)
             {
                 Response.StatusCode = 400;
                 return Content("Passwords does not match.");
             }
-            
+
+            await _unitOfWork.SaveChangesAsync();
+
+            return result;
+        }
+        [Route("roles")]
+        [HttpPost]
+        public async Task<ActionResult<GetUserModel>> CreateUserWithRole(CreateUserWithRoleModel userModel)
+        {
+            var result = await _userService.CreateUserWithRoleAsync(userModel);
+
             await _unitOfWork.SaveChangesAsync();
 
             return result;

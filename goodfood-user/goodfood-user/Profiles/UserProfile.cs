@@ -12,6 +12,7 @@ namespace goodfood_user.Profiles
             CreateMap<User, GetUserModel>();
             CreateMap<CreateUserModel, User>();
             CreateMap<UpdateUserModel, User>();
+            CreateMap<CreateUserWithRoleModel, User>();
         }
 
     }

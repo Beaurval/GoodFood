@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Text;
+using AutoMapper;
 using goodfood_user.Entities;
 using goodfood_user.Exeptions;
 using goodfood_user.Models.Role;
@@ -43,11 +44,12 @@ namespace goodfood_user.Services
             return _mapper.Map<GetUserModel>(await _userRepository.CreateUser(user));
         }
 
-        public async Task<GetUserModel> CreateUserWithRoleAsync(CreateUserModel userModel, GetRoleModel role)
+        public async Task<GetUserModel> CreateUserWithRoleAsync(CreateUserWithRoleModel userModel)
         {
             User user = _mapper.Map<User>(userModel);
             user.RegistrationValidated = false;
-            user.RoleId = role.Id;
+            user.Password = GenerateRandomPassword();
+
             return _mapper.Map<GetUserModel>(await _userRepository.CreateUser(user));
         }
 
@@ -95,6 +97,19 @@ namespace goodfood_user.Services
         public async Task<bool> UserExistWithMail(string email)
         {
             return await _userRepository.GetUserByMail(email) is not null;
+        }
+
+        private string GenerateRandomPassword()
+        {
+            int length = 10;
+            const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder res = new StringBuilder();
+            Random rnd = new Random();
+            while (0 < length--)
+            {
+                res.Append(valid[rnd.Next(valid.Length)]);
+            }
+            return res.ToString();
         }
     }
 }

@@ -29,6 +29,7 @@ namespace goodfood_user.Repositories
             return user;
         }
 
+
         public async Task ConfirmRegistration(int idUser)
         {
             User user = await GetUser(idUser);

@@ -7,5 +7,6 @@
         public string Description { get; set; }
         public IFormFile ImageToUpload { get; set; } = null!;
         public int CategoryId { get; set; }
+        public int RestaurantId { get; set; }
     }
 }

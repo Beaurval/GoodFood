@@ -36,7 +36,8 @@ namespace goodfood_products.Repositories
                 Name = productModel.Name,
                 Description = productModel.Description,
                 ProductImage = convertedImage,
-                Price = productModel.Price
+                Price = productModel.Price,
+                RestaurantId = productModel.RestaurantId
             };
 
             await _productContext.Products.AddAsync(product);

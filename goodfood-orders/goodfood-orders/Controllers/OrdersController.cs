@@ -24,6 +24,11 @@ namespace goodfood_orders.Controllers
         public async Task<ActionResult<ICollection<Order>>> GetOrders() 
             => (await _orderService.GetAllOrdersAsync()).ToList();
 
+        [Route("users/{idUser}")]
+        [HttpGet]
+        public async Task<ActionResult<ICollection<Order>>> GetOrdersForUser(int idUser)
+            => (await _orderService.GetOrderByIdUserAsync(idUser)).ToList();
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Order>> GetOrder(int id)
         {

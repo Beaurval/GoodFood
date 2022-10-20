@@ -19,6 +19,12 @@ namespace goodfood_orders.Repositories
 
         public async Task<Order> GetOrderById(int id) => (await _orderContext.Orders.Include("Lines").FirstOrDefaultAsync(o => o.Id == id))!;
 
+        public async Task<ICollection<Order>> GetOrderByIdUser(int userId)
+        {
+            return await _orderContext.Orders.Include("Lines").Where(o => o.UserId == userId).ToListAsync();
+        }
+
+
         public async Task<Order> CreateOrder(CreateOrderModel orderModel)
         {
             var order = new Order

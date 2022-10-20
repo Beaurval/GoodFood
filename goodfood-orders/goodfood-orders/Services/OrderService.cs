@@ -22,6 +22,11 @@ namespace goodfood_orders.Services
         public async Task<Order> GetOrderByIdAsync(int id) 
             => await _orderRepository.GetOrderById(id);
 
+        public async Task<ICollection<Order>> GetOrderByIdUserAsync(int idUser)
+        {
+            return await _orderRepository.GetOrderByIdUser(idUser);
+        }
+
         public async Task<Order> CreateOrderAsync(CreateOrderModel orderModel) => await _orderRepository.CreateOrder(orderModel);
 
         public async Task UpdateOrderAsync(UpdateOrderModel orderModel)

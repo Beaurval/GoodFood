@@ -25,7 +25,7 @@ namespace goodfood_orders.Repositories
             {
                 Lines = new List<OrderLine>(),
                 RestaurantId = orderModel.RestaurantId,
-                UserId = orderModel.OrderId
+                UserId = orderModel.UserId
             };
 
             await _orderContext.Orders.AddAsync(order);

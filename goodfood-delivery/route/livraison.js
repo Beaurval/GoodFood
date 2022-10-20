@@ -30,7 +30,11 @@ async (req,res) => {
         }
 
         db.findOne({"_id": req.params.id}, (err, newDoc) => {
-            res.status(200).json(newDoc);
+            if(newDoc == null){
+                res.status(404).json(newDoc);
+            }else {
+                res.status(200).json(newDoc);
+            }
         });
     }catch(e){
         res.status(500).json({"erreur": "y'a une couille dans le paté"});
@@ -46,8 +50,12 @@ async (req,res) => {
           return res.status(400).json({ errors: errors.array() });
         }
 
-        db.findOne({"commande_id": req.params.id}, (err, newDoc) => {
-            res.status(200).json(newDoc);
+        db.findOne({"commande_id": parseInt(req.params.id)}, (err, newDoc) => {
+            if(newDoc == null){
+                res.status(404).json(newDoc);
+            }else {
+                res.status(200).json(newDoc);
+            }
         });
     }catch(e){
         res.status(500).json({"erreur": "y'a une couille dans le paté"});

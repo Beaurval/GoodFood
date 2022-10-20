@@ -35,7 +35,7 @@ namespace goodfood_orders.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Order>> CreateOrder([FromForm] CreateOrderModel orderModel)
+        public async Task<ActionResult<Order>> CreateOrder(CreateOrderModel orderModel)
         {
             Order order = await _orderService.CreateOrderAsync(orderModel);
             await _unitOfWork.SaveChangesAsync();
@@ -44,7 +44,7 @@ namespace goodfood_orders.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateOrder(int id, [FromForm] UpdateOrderModel orderModel)
+        public async Task<ActionResult> UpdateOrder(int id, UpdateOrderModel orderModel)
         {
             if (id != orderModel.Id)
                 return NotFound();

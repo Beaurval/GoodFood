@@ -8,7 +8,7 @@ namespace goodfood_user.Services.Interfaces
         public Task<GetUserModel> GetUserAsync(int idUser);
         public Task<ICollection<GetUserModel>> GetAllUsersAsync();
         public Task<GetUserModel> CreateUserAsync(CreateUserModel user);
-        public Task<GetUserModel> CreateUserWithRoleAsync(CreateUserWithRoleModel user);
+        public Task<GetUserWithRoleModel> CreateUserWithRoleAsync(CreateUserWithRoleModel user);
         public Task<GetUserModel> UpdateUserAsync(UpdateUserModel user);
         public Task AskResetPassword(string mail);
         public Task<bool> ResetPassword(int idUser, string password, string confirmPassword);

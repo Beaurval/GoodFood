@@ -44,13 +44,13 @@ namespace goodfood_user.Services
             return _mapper.Map<GetUserModel>(await _userRepository.CreateUser(user));
         }
 
-        public async Task<GetUserModel> CreateUserWithRoleAsync(CreateUserWithRoleModel userModel)
+        public async Task<GetUserWithRoleModel> CreateUserWithRoleAsync(CreateUserWithRoleModel userModel)
         {
             User user = _mapper.Map<User>(userModel);
             user.RegistrationValidated = false;
             user.Password = GenerateRandomPassword();
 
-            return _mapper.Map<GetUserModel>(await _userRepository.CreateUser(user));
+            return _mapper.Map<GetUserWithRoleModel>(await _userRepository.CreateUser(user));
         }
 
         public async Task<GetUserModel> UpdateUserAsync(UpdateUserModel userModel)

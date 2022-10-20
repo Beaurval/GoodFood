@@ -92,7 +92,7 @@ namespace goodfood_user.Controllers
         }
         [Route("roles")]
         [HttpPost]
-        public async Task<ActionResult<GetUserModel>> CreateUserWithRole(CreateUserWithRoleModel userModel)
+        public async Task<ActionResult<GetUserWithRoleModel>> CreateUserWithRole(CreateUserWithRoleModel userModel)
         {
             var result = await _userService.CreateUserWithRoleAsync(userModel);
 

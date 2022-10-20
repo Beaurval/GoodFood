@@ -35,11 +35,29 @@ async (req,res) => {
     }catch(e){
         res.status(500).json({"erreur": "y'a une couille dans le paté"});
     }
+}),
+
+router.get('/byCommande_id/:id', 
+param('id'), 
+async (req,res) => {
+    try{
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+          return res.status(400).json({ errors: errors.array() });
+        }
+
+        db.findOne({"commande_id": req.params.id}, (err, newDoc) => {
+            res.status(200).json(newDoc);
+        });
+    }catch(e){
+        res.status(500).json({"erreur": "y'a une couille dans le paté"});
+    }
 })
+
+
 
 router.post('/init', 
 body('commande_id').exists(),
-body('livreur_id').exists(),
 body('restaurant_id').exists(),
 body('adresse_id').exists(),
 body('client_id').exists(),
@@ -53,7 +71,7 @@ async (req, res) => {
         let cmd = {
             "commande_id": req.body.commande_id,
             "livreur": {
-                "livreur_id": req.body.livreur_id,
+                "livreur_id": "",
                 "position": {
                     "x": null,
                     "y": null

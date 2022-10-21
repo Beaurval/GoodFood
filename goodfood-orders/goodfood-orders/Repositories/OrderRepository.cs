@@ -32,7 +32,8 @@ namespace goodfood_orders.Repositories
                 Lines = new List<OrderLine>(),
                 RestaurantId = orderModel.RestaurantId,
                 UserId = orderModel.UserId,
-                Tip = orderModel.Tip
+                Tip = orderModel.Tip,
+                Created = DateTime.Now,
             };
 
             await _orderContext.Orders.AddAsync(order);

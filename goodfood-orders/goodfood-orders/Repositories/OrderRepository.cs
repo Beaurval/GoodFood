@@ -33,7 +33,7 @@ namespace goodfood_orders.Repositories
                 RestaurantId = orderModel.RestaurantId,
                 UserId = orderModel.UserId,
                 Tip = orderModel.Tip,
-                Created = DateTime.Now,
+                Created = DateTime.Now.ToString("MM/dd/yyyy H:mm"),
             };
 
             await _orderContext.Orders.AddAsync(order);

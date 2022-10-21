@@ -8,7 +8,7 @@ namespace goodfood_orders.Entities
         public double Tip { get; set; }
         public int RestaurantId { get; set; }
         public int UserId { get; set; }
-        public DateTime Created { get; set; }
+        public string Created { get; set; }
         public ICollection<OrderLine> Lines { get; set; } = null!;
     }
 }

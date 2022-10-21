@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using goodfood_user.Entities;
 using goodfood_user.Exeptions;
 using goodfood_user.Models.Address;
 using goodfood_user.Models.User;
@@ -98,13 +99,13 @@ namespace goodfood_user.Controllers
         }
         [Route("roles")]
         [HttpPost]
-        public async Task<ActionResult<GetUserWithRoleModel>> CreateUserWithRole(CreateUserWithRoleModel userModel)
+        public async Task<ActionResult<User>> CreateUserWithRole(CreateUserWithRoleModel userModel)
         {
-            var result = await _userService.CreateUserWithRoleAsync(userModel);
+            User result = await _userService.CreateUserWithRoleAsync(userModel);
 
-            await _unitOfWork.SaveChangesAsync();
+            _unitOfWork.SaveChanges();
 
-            return result;
+            return Ok(result);
         }
 
         [Route("{idUser}/reset")]

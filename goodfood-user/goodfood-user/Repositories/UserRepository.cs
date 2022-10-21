@@ -23,6 +23,11 @@ namespace goodfood_user.Repositories
             return (await _context.Users.FirstOrDefaultAsync(u => u.Email == email))!;
         }
 
+        public async Task<User> GetUserByUuid(string uuid)
+        {
+            return (await _context.Users.FirstOrDefaultAsync(u => u.Uuid == uuid))!;
+        }
+
         public async Task<User> CreateUser(User user)
         {
             await _context.Users.AddAsync(user);

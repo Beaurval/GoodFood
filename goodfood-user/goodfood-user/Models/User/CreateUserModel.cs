@@ -8,6 +8,7 @@
         public string LastName { get; set; }
         public string Password { get; set; }
         public string PasswordConfirmation { get; set; }
+        public string Uuid { get; set; }
         public string PhoneNumber { get; set; }
     }
 }

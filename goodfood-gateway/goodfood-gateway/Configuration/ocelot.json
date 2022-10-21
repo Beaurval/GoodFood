@@ -169,6 +169,18 @@
       "UpstreamHttpMethod": [ "Put", "Post", "Delete", "Get" ]
     },
     {
+      "DownstreamPathTemplate": "/api/users/identifier",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "20.237.0.2",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/users/identifier",
+      "UpstreamHttpMethod": [ "Put", "Post", "Delete", "Get" ]
+    },
+    {
       "DownstreamPathTemplate": "/api/users/{id}/addresses",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [

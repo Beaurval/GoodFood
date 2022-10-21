@@ -70,6 +70,12 @@ namespace goodfood_user.Controllers
         {
             return (await _userService.GetAllUsersAsync()).ToList();
         }
+        [Route("identifier")]
+        [HttpGet]
+        public async Task<ActionResult<GetUserModel>> GetUsersByUuid(string uuid)
+        {
+            return Ok(await _userService.GetUserWithUuid(uuid));
+        }
 
         [HttpPost]
         public async Task<ActionResult<GetUserModel>> CreateUser(CreateUserModel userModel)

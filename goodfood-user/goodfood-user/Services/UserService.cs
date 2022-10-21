@@ -26,6 +26,12 @@ namespace goodfood_user.Services
             return userModel;
         }
 
+        public async Task<GetUserModel> GetUserWithUuid(string uuid)
+        {
+            GetUserModel userModel = _mapper.Map<GetUserModel>((await _userRepository.GetUserByUuid(uuid)));
+            return userModel;
+        }
+
         public async Task<ICollection<GetUserModel>> GetAllUsersAsync()
         {
             List<GetUserModel> usersModel = _mapper.Map<List<GetUserModel>>((await _userRepository.GetAllUsers()));

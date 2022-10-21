@@ -6,6 +6,7 @@ namespace goodfood_user.Services.Interfaces
     public interface IUserService
     {
         public Task<GetUserModel> GetUserAsync(int idUser);
+        public Task<GetUserModel> GetUserWithUuid(string uuid);
         public Task<ICollection<GetUserModel>> GetAllUsersAsync();
         public Task<GetUserModel> CreateUserAsync(CreateUserModel user);
         public Task<GetUserWithRoleModel> CreateUserWithRoleAsync(CreateUserWithRoleModel user);

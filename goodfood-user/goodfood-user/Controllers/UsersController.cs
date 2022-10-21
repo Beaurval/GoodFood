@@ -122,7 +122,7 @@ namespace goodfood_user.Controllers
         }
 
         [HttpPut("{idUser}")]
-        public async Task<ActionResult<UpdateUserModel>> UpdateUser([FromForm] UpdateUserModel userModel, int idUser)
+        public async Task<ActionResult<UpdateUserModel>> UpdateUser(UpdateUserModel userModel, int idUser)
         {
             if (userModel.Id != idUser)
             {

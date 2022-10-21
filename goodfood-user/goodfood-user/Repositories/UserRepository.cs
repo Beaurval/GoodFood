@@ -65,6 +65,7 @@ namespace goodfood_user.Repositories
 
         public void UpdateUser(User user)
         {
+            
             _context.ChangeTracker.Clear();
             _context.Users.Update(user);
         }

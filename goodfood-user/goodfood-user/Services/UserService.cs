@@ -61,7 +61,8 @@ namespace goodfood_user.Services
 
         public async Task<GetUserModel> UpdateUserAsync(UpdateUserModel userModel)
         {
-            User user = _mapper.Map<User>(userModel);
+            User user = await _userRepository.GetUser(userModel.Id);
+            user.Uuid = userModel.Uuid;
             _userRepository.UpdateUser(user);
             return _mapper.Map<GetUserModel>(user);
         }

@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using goodfood_user.Entities;
 using goodfood_user.Exeptions;
 using goodfood_user.Models.Address;
 using goodfood_user.Models.User;
@@ -70,6 +71,12 @@ namespace goodfood_user.Controllers
         {
             return (await _userService.GetAllUsersAsync()).ToList();
         }
+        [Route("identifier")]
+        [HttpGet]
+        public async Task<ActionResult<GetUserModel>> GetUsersByUuid(string uuid)
+        {
+            return Ok(await _userService.GetUserWithUuid(uuid));
+        }
 
         [HttpPost]
         public async Task<ActionResult<GetUserModel>> CreateUser(CreateUserModel userModel)
@@ -92,13 +99,13 @@ namespace goodfood_user.Controllers
         }
         [Route("roles")]
         [HttpPost]
-        public async Task<ActionResult<GetUserWithRoleModel>> CreateUserWithRole(CreateUserWithRoleModel userModel)
+        public async Task<ActionResult<User>> CreateUserWithRole(CreateUserWithRoleModel userModel)
         {
-            var result = await _userService.CreateUserWithRoleAsync(userModel);
+            User result = await _userService.CreateUserWithRoleAsync(userModel);
 
-            await _unitOfWork.SaveChangesAsync();
+            _unitOfWork.SaveChanges();
 
-            return result;
+            return Ok(result);
         }
 
         [Route("{idUser}/reset")]
@@ -116,7 +123,7 @@ namespace goodfood_user.Controllers
         }
 
         [HttpPut("{idUser}")]
-        public async Task<ActionResult<UpdateUserModel>> UpdateUser([FromForm] UpdateUserModel userModel, int idUser)
+        public async Task<ActionResult<UpdateUserModel>> UpdateUser(UpdateUserModel userModel, int idUser)
         {
             if (userModel.Id != idUser)
             {

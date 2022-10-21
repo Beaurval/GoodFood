@@ -1,4 +1,5 @@
-﻿using goodfood_user.Models.Role;
+﻿using goodfood_user.Entities;
+using goodfood_user.Models.Role;
 using goodfood_user.Models.User;
 
 namespace goodfood_user.Services.Interfaces
@@ -6,9 +7,10 @@ namespace goodfood_user.Services.Interfaces
     public interface IUserService
     {
         public Task<GetUserModel> GetUserAsync(int idUser);
+        public Task<GetUserModel> GetUserWithUuid(string uuid);
         public Task<ICollection<GetUserModel>> GetAllUsersAsync();
         public Task<GetUserModel> CreateUserAsync(CreateUserModel user);
-        public Task<GetUserWithRoleModel> CreateUserWithRoleAsync(CreateUserWithRoleModel user);
+        public Task<User> CreateUserWithRoleAsync(CreateUserWithRoleModel user);
         public Task<GetUserModel> UpdateUserAsync(UpdateUserModel user);
         public Task AskResetPassword(string mail);
         public Task<bool> ResetPassword(int idUser, string password, string confirmPassword);

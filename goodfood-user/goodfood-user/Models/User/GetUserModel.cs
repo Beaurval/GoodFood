@@ -9,6 +9,7 @@ namespace goodfood_user.Models.User
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
+        public string Uuid { get; set; }
         public bool RegistrationValidated { get; set; }
         public int RoleId { get; set; }
     }

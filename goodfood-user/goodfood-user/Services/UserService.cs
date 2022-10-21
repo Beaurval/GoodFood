@@ -26,6 +26,12 @@ namespace goodfood_user.Services
             return userModel;
         }
 
+        public async Task<GetUserModel> GetUserWithUuid(string uuid)
+        {
+            GetUserModel userModel = _mapper.Map<GetUserModel>((await _userRepository.GetUserByUuid(uuid)));
+            return userModel;
+        }
+
         public async Task<ICollection<GetUserModel>> GetAllUsersAsync()
         {
             List<GetUserModel> usersModel = _mapper.Map<List<GetUserModel>>((await _userRepository.GetAllUsers()));
@@ -44,18 +50,19 @@ namespace goodfood_user.Services
             return _mapper.Map<GetUserModel>(await _userRepository.CreateUser(user));
         }
 
-        public async Task<GetUserWithRoleModel> CreateUserWithRoleAsync(CreateUserWithRoleModel userModel)
+        public async Task<User> CreateUserWithRoleAsync(CreateUserWithRoleModel userModel)
         {
             User user = _mapper.Map<User>(userModel);
             user.RegistrationValidated = false;
             user.Password = GenerateRandomPassword();
 
-            return _mapper.Map<GetUserWithRoleModel>(await _userRepository.CreateUser(user));
+            return await _userRepository.CreateUser(user);
         }
 
         public async Task<GetUserModel> UpdateUserAsync(UpdateUserModel userModel)
         {
-            User user = _mapper.Map<User>(userModel);
+            User user = await _userRepository.GetUser(userModel.Id);
+            user.Uuid = userModel.Uuid;
             _userRepository.UpdateUser(user);
             return _mapper.Map<GetUserModel>(user);
         }

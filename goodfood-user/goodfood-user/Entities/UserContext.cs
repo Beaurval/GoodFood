@@ -11,6 +11,7 @@ namespace goodfood_user.Entities
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Role>().HasData(new Role {Id = 1, Name = "Customer"});
+            modelBuilder.Entity<User>().Property(m => m.Uuid).IsRequired(false);
         }
 
         public DbSet<User> Users { get; set; }
